@@ -1,0 +1,35 @@
+ class Solution {
+public:
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        vector<vector<int>> v;
+        unordered_map<int,int> m;
+        for(int i=0;i<nums2.size();i++)
+            m[nums2[i]]++;
+        vector<int> v1;
+        unordered_map<int,int> m1;
+        for(int i=0;i<nums1.size();i++) {     
+            m1[nums1[i]]++;
+            if(m[nums1[i]] > 0)
+                continue;
+            if(m1[nums1[i]] == 1)
+                v1.push_back(nums1[i]);
+        }    
+        for(auto &i:m)
+            i.second = 0;     
+        for(int i=0;i<nums1.size();i++)
+            m[nums1[i]]++;
+        vector<int> v2;
+        for(auto &i:m1)
+            i.second = 0; 
+        for(int i=0;i<nums2.size();i++) {    
+            m1[nums2[i]]++;
+            if(m[nums2[i]] > 0)
+                continue;
+            if(m1[nums2[i]] == 1)
+                v2.push_back(nums2[i]);
+        }
+        v.push_back(v1);
+        v.push_back(v2);
+        return v;
+    }
+};  // Note the semicolon here to terminate the function definition.
