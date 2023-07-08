@@ -1,0 +1,16 @@
+class Solution {
+public:
+    void rotate(vector<int>& n, int k) {
+        vector<int>v;
+        k=k%n.size();
+        for(int j=n.size()-k;j<n.size();j++)
+        {
+            v.push_back(n[j]);
+            
+        }
+            n.erase(n.end()-k,n.end());
+
+         n.insert(n.begin(),v.begin(),v.end());
+        
+    }
+};
