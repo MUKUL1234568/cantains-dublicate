@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int numJewelsInStones(string j, string s) {
+             unordered_map<int,int>m;
+             int c=0;
+            for(auto t:j)
+            m[t]++;
+            for(auto t:s)
+            {
+                if(m[t]>0)
+                c++;
+            }
+            return c;
+    }
+};
