@@ -1,0 +1,97 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        ListNode *te=head;
+        int ce=0;
+        while(te)
+        {
+            ce++;
+            te=te->next;
+        }
+        if(head==NULL||head->next==NULL||head->next->next==NULL)
+        return head;
+        ListNode *t=head->next;
+        ListNode *tr=t;
+        ListNode *c=head;
+        if(ce%2==0)
+        {
+        while(tr)
+        {    int f=0;
+            t=tr;
+            if(tr->next!=NULL)
+            {
+                tr=tr->next;
+                if(tr->next!=NULL)
+                tr=tr->next;
+            }
+              if(tr->next==NULL)
+              f=1;
+            if(t->next->next!=NULL)
+            {
+            ListNode *te=t->next;
+            t->next=t->next->next;
+            te->next=c->next;
+            c->next=te;
+            c=te;
+            }
+            if((t->next->next==NULL)&&f==0)
+            {
+               ListNode *te=t->next;
+            t->next=NULL;
+            te->next=c->next;
+            c->next=te;
+            c=te;
+             
+            }
+            if(f==1)
+            break;
+        }
+        }
+        else
+        {
+            while(tr)
+        {    int f=0;
+            t=tr;
+            if(tr->next!=NULL)
+            {
+                tr=tr->next;
+                if(tr->next!=NULL)
+                tr=tr->next;
+            }
+              if(tr->next==NULL)
+              f=1;
+            if(t->next->next!=NULL)
+            {
+            ListNode *te=t->next;
+            t->next=t->next->next;
+            te->next=c->next;
+            c->next=te;
+            c=te;
+            }
+            if((t->next->next==NULL))
+            {
+               ListNode *te=t->next;
+            t->next=NULL;
+            te->next=c->next;
+            c->next=te;
+            c=te;
+             
+            }
+            if(f==1)
+            break;
+        }
+        }
+        return head;
+        
+    }
+};
